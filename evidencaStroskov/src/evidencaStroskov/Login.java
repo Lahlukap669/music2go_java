@@ -16,7 +16,7 @@ import java.awt.event.MouseEvent;
 
 public class Login {
 
-	private JFrame frame;
+	JFrame frame;
 	private JTextField textField;
 	private JTextField textField_1;
 

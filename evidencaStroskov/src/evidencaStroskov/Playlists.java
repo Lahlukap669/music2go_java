@@ -15,11 +15,15 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Button;
 import java.awt.Cursor;
+import java.awt.Choice;
+import javax.swing.JComboBox;
+import javax.swing.JEditorPane;
+import javax.swing.JSpinner;
+import javax.swing.JList;
 
-public class Main {
+public class Playlists {
 
 	JFrame frame;
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -28,7 +32,7 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main window = new Main();
+					Playlists window = new Playlists();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +44,7 @@ public class Main {
 	/**
 	 * Create the application.
 	 */
-	public Main() {
+	public Playlists() {
 		initialize();
 	}
 
@@ -53,17 +57,11 @@ public class Main {
 		frame.getContentPane().setBackground(Color.BLACK);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("PLAYLIST URL:");
+		JLabel lblNewLabel_1 = new JLabel("PLAYLISTS:");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
-		lblNewLabel_1.setBounds(130, 62, 99, 17);
+		lblNewLabel_1.setBounds(130, 10, 99, 17);
 		frame.getContentPane().add(lblNewLabel_1);
-		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		textField.setColumns(10);
-		textField.setBounds(130, 89, 462, 33);
-		frame.getContentPane().add(textField);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
@@ -72,43 +70,56 @@ public class Main {
 		frame.getContentPane().add(panel);
 		
 		JButton btnNewButton = new JButton("");
-		btnNewButton.setSelected(true);
 		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		btnNewButton.setBackground(Color.BLACK);
-		btnNewButton.setIcon(new ImageIcon(Main.class.getResource("/images/url2.png")));
+		btnNewButton.setIcon(new ImageIcon(Playlists.class.getResource("/images/url2.png")));
 		btnNewButton.setBounds(20, 10, 79, 70);
 		panel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("");
+		btnNewButton_1.setSelected(true);
 		btnNewButton_1.setBackground(Color.BLACK);
-		btnNewButton_1.setIcon(new ImageIcon(Main.class.getResource("/images/playlist2.png")));
+		btnNewButton_1.setIcon(new ImageIcon(Playlists.class.getResource("/images/playlist2.png")));
 		btnNewButton_1.setBounds(20, 90, 79, 70);
 		panel.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("");
 		btnNewButton_2.setBackground(Color.BLACK);
-		btnNewButton_2.setIcon(new ImageIcon(Main.class.getResource("/images/settings2.png")));
+		btnNewButton_2.setIcon(new ImageIcon(Playlists.class.getResource("/images/settings2.png")));
 		btnNewButton_2.setBounds(20, 244, 79, 70);
 		panel.add(btnNewButton_2);
 		
-		JButton btnLogin = new JButton("DOWNLOAD AND SAVE");
+		JButton btnLogin = new JButton("EDIT");
 		btnLogin.setForeground(new Color(192, 192, 192));
 		btnLogin.setHorizontalAlignment(SwingConstants.CENTER);
 		btnLogin.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		btnLogin.setBackground(new Color(34, 139, 34));
-		btnLogin.setBounds(130, 140, 196, 46);
+		btnLogin.setBounds(119, 260, 99, 46);
 		frame.getContentPane().add(btnLogin);
 		
+		JButton btnDelete = new JButton("DELETE");
+		btnDelete.setHorizontalAlignment(SwingConstants.CENTER);
+		btnDelete.setForeground(Color.LIGHT_GRAY);
+		btnDelete.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
+		btnDelete.setBackground(new Color(34, 139, 34));
+		btnDelete.setBounds(228, 260, 99, 46);
+		frame.getContentPane().add(btnDelete);
+		
+		JList list = new JList();
+		list.setBackground(new Color(128, 128, 128));
+		list.setBounds(119, 37, 266, 199);
+		frame.getContentPane().add(list);
+		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(Main.class.getResource("/images/bg2.jpg")));
-		lblNewLabel.setBounds(144, 34, 566, 346);
+		lblNewLabel.setIcon(new ImageIcon(Playlists.class.getResource("/images/bg2.jpg")));
+		lblNewLabel.setBounds(140, 37, 566, 346);
 		frame.getContentPane().add(lblNewLabel);
 		frame.setBounds(100, 100, 631, 365);
 		
 		
 	}
 	public void setVisible(boolean b) {
-		Main window = new Main();
+		Playlists window = new Playlists();
 		window.frame.setVisible(true);		
 	}
 }
