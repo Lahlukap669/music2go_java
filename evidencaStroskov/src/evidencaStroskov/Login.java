@@ -7,9 +7,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -69,10 +80,11 @@ public class Login {
 		lblNewLabel_1_1.setBounds(309, 129, 99, 17);
 		frame.getContentPane().add(lblNewLabel_1_1);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(309, 150, 274, 28);
-		frame.getContentPane().add(textField_1);
+		final JPasswordField JPasswordField = new JPasswordField(20);
+		//JPasswordField.setActionCommand(OK);
+		JPasswordField.setColumns(10);
+		JPasswordField.setBounds(309, 156, 274, 28);
+		frame.getContentPane().add(JPasswordField);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
@@ -86,10 +98,56 @@ public class Login {
 		panel.add(lblNewLabel);
 		
 		JButton btnLogin = new JButton("LOGIN");
+		btnLogin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String email = textField.getText();
+				char[] pas = JPasswordField.getPassword();
+				String geslo = new String(pas);
+				//"http://music2go.herokuapp.com/register"
+				
+				//Connection to API (method=POST)
+				final String input = String.format("{\"email\":\"%s\", \"geslo\":\"%s\"}", email, geslo);
+		        
+		        JSONParser parser = new JSONParser();
+		        try {
+			        OkHttpClient httpClient = new OkHttpClient();
+			        Response response = httpClient.newCall(new Request.Builder().addHeader("Content-Type", "application/json").url("http://127.0.0.1:5000/login").post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"),input)).build()).execute();
+			        
+			        JSONObject jsonResult = (JSONObject) parser.parse(response.body().string());
+			        
+			        
+			        //CONNECTION API 2
+	
+			        Response response1 = httpClient.newCall(new Request.Builder().addHeader("Content-Type", "application/json").url("http://127.0.0.1:5000/userinfo").post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"),input)).build()).execute();
+			        
+			        JSONObject jsonResult1 = (JSONObject) parser.parse(response1.body().string());
+			        //Vars sp1 = new Vars(user_id, user_ime, user_priimek, user_email, user_geslo, user_admin);
+			        
+			        Vars.user_id = (Long) jsonResult1.get("id");
+			        Vars.user_ime = (String) jsonResult1.get("ime");
+			        Vars.user_priimek = (String) jsonResult1.get("priimek");
+			        Vars.user_email = (String) jsonResult1.get("email");
+			        Vars.user_geslo = (String) jsonResult1.get("geslo");
+			        Vars.user_admin = (Long) jsonResult1.get("admin");
+			        			        
+			        //System.out.println(sp1.ime());
+			        boolean bool = (boolean) jsonResult.get("bool");
+			        if(bool==true){
+						Main MainScreen = new Main();
+						MainScreen.setVisible(true);
+						frame.dispose();
+			        }else {
+			        	JOptionPane.showMessageDialog(frame,"Username or password incorrect!!","Warning",JOptionPane.WARNING_MESSAGE);
+			        }
+			        
+		        }catch(Exception e1) {System.out.println("exception: "+e1);}
+			}
+		});
 		btnLogin.setHorizontalAlignment(SwingConstants.CENTER);
 		btnLogin.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		btnLogin.setBackground(new Color(255, 150, 0));
-		btnLogin.setBounds(309, 240, 274, 46);
+		btnLogin.setBounds(309, 199, 274, 46);
 		frame.getContentPane().add(btnLogin);
 		
 		JLabel lblNewLabel_2 = new JLabel("I don't have account yet");

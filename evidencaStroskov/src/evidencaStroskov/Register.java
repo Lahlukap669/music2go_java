@@ -165,90 +165,23 @@ public class Register {
 		        JSONParser parser = new JSONParser();
 		        try {JSONObject json = (JSONObject) parser.parse(input);
 		        OkHttpClient httpClient = new OkHttpClient();
-		        httpClient.newCall(new Request.Builder().addHeader("Content-Type", "application/json").url("http://localhost:5000/register").post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"),json.toString())).build()).execute();
+		        Response response = httpClient.newCall(new Request.Builder().addHeader("Content-Type", "application/json").url("http://127.0.0.1:5000/register").post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"),input)).build()).execute();
 		        
+		        JSONParser parser1 = new JSONParser();
+		        JSONObject jsonResult = (JSONObject) parser.parse(response.body().string());
 		        
-		        System.out.println(input);
-		        
-		        /*Request request = new Request.Builder()
-		                .url("http://localhost:5000/register")
-		                .addHeader("User-Agent", "OkHttp Bot")
-		                .post(formBody)
-		                .build();
-		        
-		        httpClient.newCall(request).execute();*/
+		        //System.out.println(jsonResult.get("bool"));	
+		        boolean bool = (boolean) jsonResult.get("bool");
+		        if(bool==true) {
+					Login LoginScreen = new Login();
+					LoginScreen.setVisible(true);
+					frame.dispose();
+		        }else {
+		        	JOptionPane.showMessageDialog(frame,"Error registering!!","Warning",JOptionPane.WARNING_MESSAGE);
+		        }
 		        
 		        }catch(Exception e1) {System.out.println(e1);}
-		        				
-				
-				//final OkHttpClient httpClient = new OkHttpClient();
-
-			        // form parameters
-			        /*RequestBody formBody = new FormBody.Builder()
-			                .add("ime", ime)
-			                .add("priimek", priimek)
-			                .add("email", email)
-			                .add("geslo", geslo)
-			                .build();*/
-			        
-			        
-			        
-			        
-
-			        /*try (Response response = httpClient.newCall(request).execute()) {
-
-			            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-			            // Get response body
-			            System.out.println(response.body().string());
-			        }catch(Exception e1) {System.out.println(e1);}*/
-				
-				
-				
-				
-				/*final String input = String.format("{\"ime\":\"%s\", \"priimek\":\"%s\", \"email\":\"%s\", \"geslo\":\"%s\"}", ime, priimek, email, geslo);
-				
-				try {
-					URL obj = new URL("http://localhost:5000/register");
-					HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-					con.setRequestMethod("POST");
-					con.setRequestProperty("User-Agent", "Mozilla/5.0");
-	
-					// For POST only - START
-					con.setDoOutput(true);
-					OutputStream os = con.getOutputStream();
-
-					//JSONParser parser = new JSONParser(); 
-					//JSONObject json = (JSONObject) parser.parse(stringToParse);
-					
-					os.write(input.getBytes());
-					System.out.println(input);
-					os.flush();
-					os.close();
-					// For POST only - END
-	
-					int responseCode = con.getResponseCode();
-					System.out.println("POST Response Code :: " + responseCode);
-	
-					if (responseCode == HttpURLConnection.HTTP_OK) { //success
-						BufferedReader in = new BufferedReader(new InputStreamReader(
-								con.getInputStream()));
-						String inputLine;
-						StringBuffer response = new StringBuffer();
-	
-						while ((inputLine = in.readLine()) != null) {
-							response.append(inputLine);
-						}
-						in.close();
-	
-						// print result
-						System.out.println(response.toString());
-					} else {
-						System.out.println("POST request didnt work");
-					}					
-				}catch(Exception e1){
-					System.out.println(e1);
-				}*/
+		        					
 			}
 		});
 
