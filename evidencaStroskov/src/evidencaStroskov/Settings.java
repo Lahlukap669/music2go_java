@@ -23,7 +23,7 @@ import javax.swing.JList;
 
 public class Settings {
 
-	JFrame frame;
+	JFrame frmSettings;
 	public String AdminR;
 
 	/**
@@ -34,7 +34,7 @@ public class Settings {
 			public void run() {
 				try {
 					Settings window = new Settings();
-					window.frame.setVisible(true);
+					window.frmSettings.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -53,10 +53,10 @@ public class Settings {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setTitle("Login");
-		frame.getContentPane().setBackground(Color.BLACK);
-		frame.getContentPane().setLayout(null);
+		frmSettings = new JFrame();
+		frmSettings.setTitle("Settings");
+		frmSettings.getContentPane().setBackground(Color.BLACK);
+		frmSettings.getContentPane().setLayout(null);
 		
 		JButton btnLogout = new JButton("LOGOUT");
 		btnLogout.addMouseListener(new MouseAdapter() {
@@ -64,7 +64,7 @@ public class Settings {
 			public void mouseClicked(MouseEvent e) {
 				Login LoginScreen = new Login();
 				LoginScreen.setVisible(true);
-				frame.dispose();
+				frmSettings.dispose();
 			}
 		});
 		btnLogout.setHorizontalAlignment(SwingConstants.CENTER);
@@ -72,7 +72,7 @@ public class Settings {
 		btnLogout.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
 		btnLogout.setBackground(new Color(34, 139, 34));
 		btnLogout.setBounds(284, 260, 83, 46);
-		frame.getContentPane().add(btnLogout);
+		frmSettings.getContentPane().add(btnLogout);
 				
 		String Admin = "" + Vars.user_admin;
 		JLabel admin = new JLabel("Admin: "+ Admin);
@@ -80,40 +80,40 @@ public class Settings {
 		admin.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		admin.setBackground(Color.BLACK);
 		admin.setBounds(130, 94, 99, 17);
-		frame.getContentPane().add(admin);
+		frmSettings.getContentPane().add(admin);
 		
 		JLabel priimek = new JLabel(Vars.user_priimek);
 		priimek.setForeground(Color.WHITE);
 		priimek.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		priimek.setBackground(Color.BLACK);
 		priimek.setBounds(130, 56, 360, 17);
-		frame.getContentPane().add(priimek);
+		frmSettings.getContentPane().add(priimek);
 		
 		JLabel email = new JLabel(Vars.user_email);
 		email.setForeground(Color.WHITE);
 		email.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		email.setBackground(Color.BLACK);
 		email.setBounds(130, 74, 354, 17);
-		frame.getContentPane().add(email);
+		frmSettings.getContentPane().add(email);
 		
 		JLabel ime = new JLabel(Vars.user_ime);
 		ime.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		ime.setForeground(Color.WHITE);
 		ime.setBackground(Color.BLACK);
 		ime.setBounds(130, 37, 404, 17);
-		frame.getContentPane().add(ime);
+		frmSettings.getContentPane().add(ime);
 		
 		JLabel lblNewLabel_1 = new JLabel("SETTINGS:");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
 		lblNewLabel_1.setBounds(130, 10, 99, 17);
-		frame.getContentPane().add(lblNewLabel_1);
+		frmSettings.getContentPane().add(lblNewLabel_1);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(Color.BLACK);
 		panel.setBounds(0, 0, 99, 335);
-		frame.getContentPane().add(panel);
+		frmSettings.getContentPane().add(panel);
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -121,7 +121,7 @@ public class Settings {
 			public void mouseClicked(MouseEvent e) {
 				Main MainScreen = new Main();
 				MainScreen.setVisible(true);
-				frame.dispose();
+				frmSettings.dispose();
 			}
 		});
 		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -136,7 +136,7 @@ public class Settings {
 			public void mouseClicked(MouseEvent e) {
 				Playlists PlaylistScreen = new Playlists();
 				PlaylistScreen.setVisible(true);
-				frame.dispose();
+				frmSettings.dispose();
 			}
 		});
 		btnNewButton_1.setBackground(Color.BLACK);
@@ -163,18 +163,18 @@ public class Settings {
 		btnLogin.setFont(new Font("Segoe UI Black", Font.PLAIN, 11));
 		btnLogin.setBackground(new Color(34, 139, 34));
 		btnLogin.setBounds(119, 260, 155, 46);
-		frame.getContentPane().add(btnLogin);
+		frmSettings.getContentPane().add(btnLogin);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Settings.class.getResource("/images/bg2.jpg")));
 		lblNewLabel.setBounds(140, 37, 566, 346);
-		frame.getContentPane().add(lblNewLabel);
-		frame.setBounds(100, 100, 631, 365);
+		frmSettings.getContentPane().add(lblNewLabel);
+		frmSettings.setBounds(100, 100, 631, 365);
 		
 		
 	}
 	public void setVisible(boolean b) {
 		Settings window = new Settings();
-		window.frame.setVisible(true);		
+		window.frmSettings.setVisible(true);		
 	}
 }

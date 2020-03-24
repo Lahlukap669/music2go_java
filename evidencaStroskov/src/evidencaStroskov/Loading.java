@@ -1,5 +1,6 @@
 package evidencaStroskov;
 import java.awt.Color;
+import java.awt.Desktop;
 import java.awt.EventQueue;
 import java.awt.Font;
 
@@ -20,6 +21,7 @@ import org.json.simple.parser.JSONParser;
 
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.OkHttpClient.Builder;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -27,6 +29,8 @@ import okhttp3.Response;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.net.URI;
+import java.util.concurrent.TimeUnit;
 
 public class Loading {
 
@@ -86,13 +90,17 @@ public class Loading {
 		frmLoading.getContentPane().add(lblNewLabel);
 		frmLoading.setBounds(100, 100, 322, 187);
 		
+		
 		final String input = String.format("{\"name\":\"%s\", \"url\":\"%s\"}", Vars.p_name, Vars.p_url);
         
         JSONParser parser = new JSONParser();
         try {JSONObject json = (JSONObject) parser.parse(input);
-        OkHttpClient httpClient = new OkHttpClient();
+        OkHttpClient httpClient = new OkHttpClient().newBuilder()
+        	    .readTimeout(5000, TimeUnit.SECONDS)
+        	    .build();
+        //.Builder().readTimeout(100, TimeUnit.SECONDS).build();
         Response response = httpClient.newCall(new Request.Builder().addHeader("Content-Type", "application/json").url("http://127.0.0.1:5000/download").post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"),input)).build()).execute();
-        
+        //Response response = new Request.httpClient.addHeader("Content-Type", "application/json").url("http://127.0.0.1:5000/download").post(RequestBody.create(MediaType.parse("application/json; charset=utf-8"),input)).build()).execute();
         JSONObject jsonResult = (JSONObject) parser.parse(response.body().string());
         
         //System.out.println(jsonResult.get("bool"));	
@@ -100,12 +108,20 @@ public class Loading {
         if(bool==true) {
         	String link = "http://127.0.0.1:5000"+jsonResult.get("url");
         	System.out.println(link);
-        	File out = javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory();
+        	
+        	try {
+        		java.awt.Desktop.getDesktop().browse(java.net.URI.create(link));
+        		frmLoading.dispose();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        	//File out = javax.swing.filechooser.FileSystemView.getFileSystemView().getHomeDirectory();
         	//String o =  out.replace("\\", "/");
-        	Download d1 = new Download(link, out);
-        	d1.run();
+        	//Download d1 = new Download(link, out);
+        	//d1.run();
 			Playlists PlaylistsScreen = new Playlists();
 			PlaylistsScreen.setVisible(true);
+			frmLoading.dispose();
         }else {
         	JOptionPane.showMessageDialog(null ,"Error loading!!","Warning",JOptionPane.WARNING_MESSAGE);
         }

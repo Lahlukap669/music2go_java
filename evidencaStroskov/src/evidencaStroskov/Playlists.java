@@ -38,7 +38,7 @@ import javax.swing.JOptionPane;
 
 public class Playlists {
 
-	JFrame frame;
+	JFrame frmPlaylists;
 
 	/**
 	 * Launch the application.
@@ -48,7 +48,7 @@ public class Playlists {
 			public void run() {
 				try {
 					Playlists window = new Playlists();
-					window.frame.setVisible(true);
+					window.frmPlaylists.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -67,28 +67,28 @@ public class Playlists {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setTitle("Login");
-		frame.getContentPane().setBackground(Color.BLACK);
-		frame.getContentPane().setLayout(null);
+		frmPlaylists = new JFrame();
+		frmPlaylists.setTitle("Playlists");
+		frmPlaylists.getContentPane().setBackground(Color.BLACK);
+		frmPlaylists.getContentPane().setLayout(null);
 		
 		JLabel bigname = new JLabel(Vars.user_ime + " " + Vars.user_priimek);
 		bigname.setForeground(Color.WHITE);
 		bigname.setBackground(Color.BLACK);
 		bigname.setBounds(118, 316, 99, 17);
-		frame.getContentPane().add(bigname);
+		frmPlaylists.getContentPane().add(bigname);
 		
 		JLabel lblNewLabel_1 = new JLabel("PLAYLISTS:");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
 		lblNewLabel_1.setBounds(130, 10, 99, 17);
-		frame.getContentPane().add(lblNewLabel_1);
+		frmPlaylists.getContentPane().add(lblNewLabel_1);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(Color.BLACK);
 		panel.setBounds(0, 0, 99, 335);
-		frame.getContentPane().add(panel);
+		frmPlaylists.getContentPane().add(panel);
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -96,7 +96,7 @@ public class Playlists {
 			public void mouseClicked(MouseEvent e) {
 				Main MainScreen = new Main();
 				MainScreen.setVisible(true);
-				frame.dispose();
+				frmPlaylists.dispose();
 			}
 		});
 		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -124,7 +124,7 @@ public class Playlists {
 			public void mouseClicked(MouseEvent e) {
 				Settings SettingsScreen = new Settings();
 				SettingsScreen.setVisible(true);
-				frame.dispose();
+				frmPlaylists.dispose();
 			}
 		});
 		btnNewButton_2.setBackground(Color.BLACK);
@@ -143,7 +143,7 @@ public class Playlists {
 		final JList list = new JList(data_list);
 		list.setBackground(new Color(128, 128, 128));
 		list.setBounds(119, 37, 266, 199);
-		frame.getContentPane().add(list);
+		frmPlaylists.getContentPane().add(list);
 		
 		String email = Vars.user_email;
 		
@@ -186,9 +186,9 @@ public class Playlists {
 	        if(bool==true){
 				Main MainScreen = new Main();
 				MainScreen.setVisible(true);
-				frame.dispose();
+				frmPlaylists.dispose();
 	        }else {
-	        	JOptionPane.showMessageDialog(frame,"Username or password incorrect!!","Warning",JOptionPane.WARNING_MESSAGE);
+	        	JOptionPane.showMessageDialog(frmPlaylists,"Username or password incorrect!!","Warning",JOptionPane.WARNING_MESSAGE);
 	        }
 	        
         }catch(Exception e1) {System.out.println("exception: "+e1);}
@@ -214,9 +214,9 @@ public class Playlists {
 			        if(bool==true){
 						Playlists PlaylistScreen = new Playlists();
 						PlaylistScreen.setVisible(true);
-						frame.dispose();
+						frmPlaylists.dispose();
 			        }else {
-			        	JOptionPane.showMessageDialog(frame,"Username or password incorrect!!","Warning",JOptionPane.WARNING_MESSAGE);
+			        	JOptionPane.showMessageDialog(frmPlaylists,"Username or password incorrect!!","Warning",JOptionPane.WARNING_MESSAGE);
 			        }
 			        
 		        }catch(Exception e1) {System.out.println("exception: "+e1);}
@@ -229,7 +229,7 @@ public class Playlists {
 		btnDelete.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		btnDelete.setBackground(new Color(34, 139, 34));
 		btnDelete.setBounds(210, 260, 81, 46);
-		frame.getContentPane().add(btnDelete);
+		frmPlaylists.getContentPane().add(btnDelete);
 		JButton btnLogin = new JButton("EDIT");
 		btnLogin.addMouseListener(new MouseAdapter() {
 			@Override
@@ -239,7 +239,7 @@ public class Playlists {
 				Vars.pid = arrOfStr[0];
 				Update_playlist playlistwindow = new Update_playlist();
 				playlistwindow.setVisible(true);
-				frame.dispose();
+				frmPlaylists.dispose();
 				
 			}
 		});
@@ -248,7 +248,7 @@ public class Playlists {
 		btnLogin.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		btnLogin.setBackground(new Color(34, 139, 34));
 		btnLogin.setBounds(119, 260, 81, 46);
-		frame.getContentPane().add(btnLogin);
+		frmPlaylists.getContentPane().add(btnLogin);
         
 		JButton btnDelete_1 = new JButton("SONGS");
 		btnDelete_1.addMouseListener(new MouseAdapter() {
@@ -266,17 +266,17 @@ public class Playlists {
 		btnDelete_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		btnDelete_1.setBackground(new Color(34, 139, 34));
 		btnDelete_1.setBounds(301, 260, 81, 46);
-		frame.getContentPane().add(btnDelete_1);
+		frmPlaylists.getContentPane().add(btnDelete_1);
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Playlists.class.getResource("/images/bg2.jpg")));
 		lblNewLabel.setBounds(140, 37, 566, 346);
-		frame.getContentPane().add(lblNewLabel);
-		frame.setBounds(100, 100, 631, 375);
+		frmPlaylists.getContentPane().add(lblNewLabel);
+		frmPlaylists.setBounds(100, 100, 631, 375);
 		
 		
 	}
 	public void setVisible(boolean b) {
 		Playlists window = new Playlists();
-		window.frame.setVisible(true);		
+		window.frmPlaylists.setVisible(true);		
 	}
 }

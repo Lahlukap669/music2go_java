@@ -38,7 +38,7 @@ import javax.swing.JOptionPane;
 
 public class Songs {
 
-	JFrame frame;
+	JFrame frmSongs;
 
 	/**
 	 * Launch the application.
@@ -48,7 +48,7 @@ public class Songs {
 			public void run() {
 				try {
 					Songs window = new Songs();
-					window.frame.setVisible(true);
+					window.frmSongs.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -67,16 +67,16 @@ public class Songs {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setTitle("Login");
-		frame.getContentPane().setBackground(Color.BLACK);
-		frame.getContentPane().setLayout(null);
+		frmSongs = new JFrame();
+		frmSongs.setTitle("Songs");
+		frmSongs.getContentPane().setBackground(Color.BLACK);
+		frmSongs.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("SONGS:");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 14));
 		lblNewLabel_1.setBounds(20, 10, 99, 17);
-		frame.getContentPane().add(lblNewLabel_1);
+		frmSongs.getContentPane().add(lblNewLabel_1);
 		
 		
 		
@@ -84,7 +84,7 @@ public class Songs {
 		btnDelete_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				frame.dispose();
+				frmSongs.dispose();
 			}
 		});
 		btnDelete_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -92,7 +92,7 @@ public class Songs {
 		btnDelete_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		btnDelete_1.setBackground(new Color(34, 139, 34));
 		btnDelete_1.setBounds(20, 236, 266, 46);
-		frame.getContentPane().add(btnDelete_1);
+		frmSongs.getContentPane().add(btnDelete_1);
 		
 		
 		
@@ -101,7 +101,7 @@ public class Songs {
 		final JList list = new JList(data_list);
 		list.setBackground(new Color(128, 128, 128));
 		list.setBounds(20, 32, 266, 199);
-		frame.getContentPane().add(list);
+		frmSongs.getContentPane().add(list);
 		
 		String idd = Vars.pid;
 		
@@ -138,7 +138,7 @@ public class Songs {
 	        if(bool==true){
 				//
 	        }else {
-	        	JOptionPane.showMessageDialog(frame,"Username or password incorrect!!","Warning",JOptionPane.WARNING_MESSAGE);
+	        	JOptionPane.showMessageDialog(frmSongs,"Username or password incorrect!!","Warning",JOptionPane.WARNING_MESSAGE);
 	        }
 	        
         }catch(Exception e1) {System.out.println("exception: "+e1);}
@@ -147,18 +147,18 @@ public class Songs {
 		lblNewLabel_1_1.setForeground(Color.WHITE);
 		lblNewLabel_1_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 9));
 		lblNewLabel_1_1.setBounds(111, 10, 99, 17);
-		frame.getContentPane().add(lblNewLabel_1_1);
+		frmSongs.getContentPane().add(lblNewLabel_1_1);
         
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Songs.class.getResource("/images/bg2.jpg")));
 		lblNewLabel.setBounds(140, 37, 566, 346);
-		frame.getContentPane().add(lblNewLabel);
-		frame.setBounds(100, 100, 316, 329);
+		frmSongs.getContentPane().add(lblNewLabel);
+		frmSongs.setBounds(100, 100, 316, 329);
 		
 		
 	}
 	public void setVisible(boolean b) {
 		Songs window = new Songs();
-		window.frame.setVisible(true);		
+		window.frmSongs.setVisible(true);		
 	}
 }

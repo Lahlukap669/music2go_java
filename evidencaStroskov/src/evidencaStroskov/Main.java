@@ -28,7 +28,7 @@ import java.awt.Cursor;
 
 public class Main {
 
-	JFrame frame;
+	JFrame frmMain;
 	private JTextField plURL;
 	private JTextField plName;
 	
@@ -40,7 +40,7 @@ public class Main {
 			public void run() {
 				try {
 					Main window = new Main();
-					window.frame.setVisible(true);
+					window.frmMain.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -59,40 +59,40 @@ public class Main {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setTitle("Login");
-		frame.getContentPane().setBackground(Color.BLACK);
-		frame.getContentPane().setLayout(null);
+		frmMain = new JFrame();
+		frmMain.setTitle("Main");
+		frmMain.getContentPane().setBackground(Color.BLACK);
+		frmMain.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel_1_1 = new JLabel("PLAYLIST NAME:");
 		lblNewLabel_1_1.setForeground(Color.WHITE);
 		lblNewLabel_1_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 10));
 		lblNewLabel_1_1.setBounds(130, 123, 99, 17);
-		frame.getContentPane().add(lblNewLabel_1_1);
+		frmMain.getContentPane().add(lblNewLabel_1_1);
 		
 		JLabel bigname = new JLabel(Vars.user_ime + " " + Vars.user_priimek);
 		bigname.setForeground(Color.WHITE);
 		bigname.setBackground(Color.BLACK);
 		bigname.setBounds(130, 305, 126, 13);
-		frame.getContentPane().add(bigname);
+		frmMain.getContentPane().add(bigname);
 		
 		JLabel lblNewLabel_1 = new JLabel("PLAYLIST URL:");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		lblNewLabel_1.setBounds(130, 62, 99, 17);
-		frame.getContentPane().add(lblNewLabel_1);
+		frmMain.getContentPane().add(lblNewLabel_1);
 		
 		plURL = new JTextField();
 		plURL.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		plURL.setColumns(10);
 		plURL.setBounds(130, 89, 462, 33);
-		frame.getContentPane().add(plURL);
+		frmMain.getContentPane().add(plURL);
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 		panel.setBackground(Color.BLACK);
 		panel.setBounds(0, 0, 99, 335);
-		frame.getContentPane().add(panel);
+		frmMain.getContentPane().add(panel);
 		
 		JButton btnNewButton = new JButton("");
 		btnNewButton.addMouseListener(new MouseAdapter() {
@@ -114,7 +114,7 @@ public class Main {
 			public void mouseClicked(MouseEvent e) {
 				Playlists PlaylistsScreen = new Playlists();
 				PlaylistsScreen.setVisible(true);
-				frame.dispose();
+				frmMain.dispose();
 			}
 		});
 		btnNewButton_1.setBackground(Color.BLACK);
@@ -128,7 +128,7 @@ public class Main {
 			public void mouseClicked(MouseEvent e) {
 				Settings SettingsScreen = new Settings();
 				SettingsScreen.setVisible(true);
-				frame.dispose();
+				frmMain.dispose();
 			}
 		});
 		btnNewButton_2.setBackground(Color.BLACK);
@@ -140,7 +140,7 @@ public class Main {
 		plName.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		plName.setColumns(10);
 		plName.setBounds(130, 140, 196, 24);
-		frame.getContentPane().add(plName);
+		frmMain.getContentPane().add(plName);
 		
 		JButton btnLogin = new JButton("DOWNLOAD AND SAVE");
 		btnLogin.addMouseListener(new MouseAdapter() {
@@ -167,7 +167,7 @@ public class Main {
 		        	Loadingwindow.setVisible(true);
 		        	JOptionPane.showMessageDialog(null, "Playlist added!", "InfoBox", JOptionPane.INFORMATION_MESSAGE);		        	 
 		        }else {
-		        	JOptionPane.showMessageDialog(frame,"Error sending request!","Warning",JOptionPane.WARNING_MESSAGE);
+		        	JOptionPane.showMessageDialog(frmMain,"Error sending request!","Warning",JOptionPane.WARNING_MESSAGE);
 		        }
 		        
 		        }catch(Exception e1) {System.out.println(e1);}
@@ -178,18 +178,18 @@ public class Main {
 		btnLogin.setFont(new Font("Segoe UI Black", Font.PLAIN, 12));
 		btnLogin.setBackground(new Color(34, 139, 34));
 		btnLogin.setBounds(130, 177, 196, 46);
-		frame.getContentPane().add(btnLogin);
+		frmMain.getContentPane().add(btnLogin);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon(Main.class.getResource("/images/bg2.jpg")));
 		lblNewLabel.setBounds(144, 34, 566, 346);
-		frame.getContentPane().add(lblNewLabel);
-		frame.setBounds(100, 100, 631, 365);
+		frmMain.getContentPane().add(lblNewLabel);
+		frmMain.setBounds(100, 100, 631, 365);
 		
 		
 	}
 	public void setVisible(boolean b) {
 		Main window = new Main();
-		window.frame.setVisible(true);		
+		window.frmMain.setVisible(true);		
 	}
 }
