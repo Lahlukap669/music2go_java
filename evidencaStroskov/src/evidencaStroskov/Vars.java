@@ -11,4 +11,8 @@ public class Vars {
 	public static String user_geslo;
 	public static Long user_admin;
 	
+	public static String pid;
+	public static String p_name;
+	public static String p_url;
+	
 }

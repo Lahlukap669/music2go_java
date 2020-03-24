@@ -161,6 +161,10 @@ public class Main {
 		        System.out.println(jsonResult.get("bool"));	
 		        boolean bool = (boolean) jsonResult.get("bool");
 		        if(bool==true) {
+		        	Vars.p_name = plName.getText();
+		        	Vars.p_url = plURL.getText();
+		        	Loading Loadingwindow = new Loading();
+		        	Loadingwindow.setVisible(true);
 		        	JOptionPane.showMessageDialog(null, "Playlist added!", "InfoBox", JOptionPane.INFORMATION_MESSAGE);		        	 
 		        }else {
 		        	JOptionPane.showMessageDialog(frame,"Error sending request!","Warning",JOptionPane.WARNING_MESSAGE);
