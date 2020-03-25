@@ -7,7 +7,7 @@ In some countries act of downloading music from youtube can be illigal or even c
 <img src="app_fotos/Screenshot_1.png" width="500" height="300"/>
 <img src="app_fotos/Screenshot_2.png" width="500" height="300"/>
 <img src="app_fotos/Screenshot_3.png" width="500" height="300"/>
-<img src="app_fotos/Screenshot_4.png" width="350" height="500"/>
+<img src="app_fotos/Screenshot_4.png" width="350" height="400"/>
 <img src="app_fotos/Screenshot_5.png" width="500" height="260"/>
 <img src="app_fotos/Screenshot_6.png" width="500" height="300"/>
 <img src="app_fotos/Screenshot_7.png" width="500" height="300"/>
