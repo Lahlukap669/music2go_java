@@ -4,15 +4,15 @@ This is aplication enables you to save playlists from youtube, and see songs for
 ## !Disclaimer
 In some countries act of downloading music from youtube can be illigal or even cause fines. However it is definitely prohibited by youtubes licence and agreements.
 
-<img src="app_fotos/Screenshot_1.png" width="900" height="450"/>
-<img src="app_fotos/Screenshot_2.png" width="900" height="450"/>
-<img src="app_fotos/Screenshot_3.png" width="900" height="450"/>
-<img src="app_fotos/Screenshot_4.png" width="900" height="450"/>
-<img src="app_fotos/Screenshot_5.png" width="900" height="450"/>
-<img src="app_fotos/Screenshot_6.png" width="900" height="450"/>
-<img src="app_fotos/Screenshot_7.png" width="900" height="450"/>
-<img src="app_fotos/Screenshot_8.png" width="900" height="450"/>
-<img src="app_fotos/Screenshot_9.png" width="900" height="450"/>
+<img src="app_fotos/Screenshot_1.png" width="500" height="300"/>
+<img src="app_fotos/Screenshot_2.png" width="500" height="300"/>
+<img src="app_fotos/Screenshot_3.png" width="500" height="300"/>
+<img src="app_fotos/Screenshot_4.png" width="500" height="180"/>
+<img src="app_fotos/Screenshot_5.png" width="500" height="300"/>
+<img src="app_fotos/Screenshot_6.png" width="500" height="300"/>
+<img src="app_fotos/Screenshot_7.png" width="500" height="300"/>
+<img src="app_fotos/Screenshot_8.png" width="300" height="200"/>
+<img src="app_fotos/Screenshot_9.png" width="300" height="200"/>
 
 
 
